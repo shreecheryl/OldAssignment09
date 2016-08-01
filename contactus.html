@@ -8,6 +8,13 @@
 	<link rel="stylesheet" href="css/base.css">
 	<link rel="stylesheet" href="css/skeleton.css">
 	<link rel="stylesheet" href="css/layout.css">
+   
+   <style type="text/css">
+       .hidden {
+           display: none;
+       }
+    
+   </style>
     
 
 	<!--[if lt IE 9]>
@@ -21,9 +28,27 @@
 		$(document).ready(function(){
 			$('#responsive-menu').mobileMenu();
             
-            $(document).tooltip();
+            $("nav").tooltip();
             
+            $(":radio").checkboxradio();
             
+            $(":checkbox").checkboxradio();
+            
+            $("#employees").selectmenu();
+            
+            $( ".widget input[type=submit], .widget a, .widget button" ).button();
+//            $( "button, input, a" ).click( function(event) {
+//              event.preventDefault();
+//            } );
+            
+            $(".widget input[type=submit]").bind("click", function(event) {
+                event.preventDefault();
+                $("#dialog").dialog();
+                $(this).unbind("click");
+                setTimeout (function() {
+                    $(".widget input[type=submit]").click()}, 2000); 
+            });
+              
 		});  // end of ready
 	</script>
 </head>
@@ -63,26 +88,42 @@
 				<input type="email" name="email" maxlength="30" required="">
 			   
                 What VectaCorp products are you interested in?<br>
-			    <label for="vProspect"><input type="checkbox" name="product" value="vProspect" id="vProspect">vProspect 2.0</label>
-			    <label for="vConvert"><input type="checkbox" name="product" value="vConvert" id="vConvert">vConvert 2.0</label>
-			    <label for="vRetain"><input type="checkbox" name="product" value="vRetain" id="vRetain">vRetain 1.0</label>
+			    
+			    <div class="widget">
+                <label for="checkbox-1">vProspect 2.0</label>
+                <input type="checkbox" name="checkbox-1" id="checkbox-1">
+                <label for="checkbox-2">vConvert 2.0</label>
+                <input type="checkbox" name="checkbox-2" id="checkbox-2">
+                <label for="checkbox-3">vRetain 1.0</label>
+                <input type="checkbox" name="checkbox-3" id="checkbox-3">
+			    </div>
 			    
 			    <br>
 			    What is your current infrastructure?<br>
-			    <label for="Mac"><input type="radio" name="infrastructure" value="Mac" id="Mac">Mac</label>
-			    <label for="Linux"><input type="radio" name="infrastructure" value="Linux" id="Linux">Linux</label>
-			    <label for="Unix"><input type="radio" name="infrastructure" value="Unix" id="Unix">Unix</label>
-			    <label for="Windows"><input type="radio" name="infrastructure" value="Windows" id="Windows">Windows</label>
+			    
+                <div class="widget">
+                <label for="radio-1">Mac</label>
+                <input type="radio" name="radio-1" id="radio-1">
+                <label for="radio-2">Linux</label>
+                <input type="radio" name="radio-1" id="radio-2">
+                <label for="radio-3">Unix</label>
+                <input type="radio" name="radio-1" id="radio-3">
+                <label for="radio-4">Windows</label>
+                <input type="radio" name="radio-1" id="radio-4">
+                </div>
 
 			    <br>
 			    How many employees do you have?
-			    <select name="companysize">
+			    <div>
+			    <select name="companysize" id="employees">
                     <option value="1-10">1-10</option>
                     <option value="11-100">11-100</option>
                     <option value="101-1000">101-1000</option>
                     <option value="More than 1000">More than 1000</option>
 		        </select>
+                </div>
                 
+                <br>
 			    How did you hear about us?
 			    <select name="hearaboutus" multiple="" size="5">
                     <option value="Magazine Ad">Magazine Ad</option>
@@ -94,9 +135,15 @@
                 
 			    Questions or comments for our sales representatives?
 			    <textarea name="questions" size="30" rows="5"></textarea>
+                
+                <div class="widget">
 			    <input type="submit" name="submit" value="Submit Now">
+			    </div>
 		    	</fieldset>
 			</form>
+        <div id="dialog" class="hidden">
+          <p>Thank you for your email! We will be in touch soon with you soon.</p>
+        </div>
 	    </section>
 		
 		<section id="testimonials" class="five columns">

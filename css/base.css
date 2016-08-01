@@ -154,7 +154,6 @@ section {
 
 	.button,
 	button,
-	input[type="submit"],
 	input[type="reset"],
 	input[type="button"] {
 		background: #eee; /* Old browsers */
@@ -184,7 +183,6 @@ section {
 
 	.button:hover,
 	button:hover,
-	input[type="submit"]:hover,
 	input[type="reset"]:hover,
 	input[type="button"]:hover {
 		color: #222;
@@ -351,7 +349,8 @@ section {
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
-  background: rgba(204, 28, 13, 1) url(../images/cd-top-arrow.svg) no-repeat center 50%;
+  background: rgba(204, 28, 13, .6) url(../images/cd-top-arrow.svg) no-repeat center 50%;
+  border-radius: 3px;
   visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity .3s 0s, visibility 0s .3s;
@@ -372,7 +371,7 @@ section {
   /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
   opacity: .5;
 }
-.no-touch .cd-top:hover {
+.no-touch .cd-top:hover, .cd-top:hover {
   background-color: #cc1c0d;
   opacity: 1;
 }
