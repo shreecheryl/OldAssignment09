@@ -13,9 +13,8 @@
        .hidden {
            display: none;
        }
-    
    </style>
-
+    
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -35,14 +34,15 @@
             
             $("#employees").selectmenu();
             
+            $( ".widget input[type=submit], .widget a, .widget button" ).button();
+            
             $(".widget input[type=submit]").bind("click", function(event) {
                 event.preventDefault();
                 $("#dialog").dialog();
                 $(this).unbind("click");
                 setTimeout (function() {
                     $(".widget input[type=submit]").click()}, 2000); 
-            });
-              
+            });  
 		});  // end of ready
 	</script>
 </head>
@@ -143,7 +143,6 @@
 		<section id="testimonials" class="five columns">
 			<h4>Map</h4>
 			<p>&nbsp;</p>
-
 		</section>
 	</main>
 </body>
